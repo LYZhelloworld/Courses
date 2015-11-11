@@ -1,0 +1,96 @@
+*.include "../../nominal.jsim"
+*.include "../../stdcell.jsim"
+
+.subckt checkop op[5:0] check[5:0] z
+Xresult op[5:0] check[5:0] result[5:0] xor2
+Xnor1 result[3:0] n1 nor4
+Xnor2 result[5:4] n2 nor2
+Xand n1 n2 z and2
+.ends
+
+.subckt ctl reset zflag irq irqe id[31:26]
++ pcsel[2:0] wasel asel ra2sel bsel alufn[5:0] wdsel[1:0] werf moe wr
+Xctl vdd 0 0 id[31:26]
++ xpcsel[2:0] xwasel xasel xra2sel xbsel xalufn[5:0] xwdsel[1:0] xwerf xmoe xwr
++ $memory width=18 nlocations=64 contents=(
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b000000100000010110 //LD=0x011000
++ 0b000001100000000001 //ST=0x011001
++ 0b011100000000000100 //illOp
++ 0b010000000000000100 //JMP=0x011011
++ 0b011100000000000100 //illOp
++ 0b000000000000000100 //BEQ=0x011101
++ 0b000000000000000100 //BNE=0x011110
++ 0b000010001101010110 //LDR=0x011111
++ 0b000000000000001100 //ADD=0x100000
++ 0b000000000000101100 //SUB=0x100001
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b000000011001101100 //CMPEQ=0x100100
++ 0b000000011010101100 //CMPLT=0x100101
++ 0b000000011011101100 //CMPLE=0x100110
++ 0b011100000000000100 //illOp
++ 0b000000001100001100 //AND=0x101000
++ 0b000000001111001100 //OR=0x101001
++ 0b000000001011001100 //XOR=0x101010
++ 0b011100000000000100 //illOp
++ 0b000000010000001100 //SHL=0x101100
++ 0b000000010000101100 //SHR=0x101101
++ 0b000000010001101100 //SRA=0x101110
++ 0b011100000000000100 //illOp
++ 0b000000100000001100 //ADDC=0x110000
++ 0b000000100000101100 //SUBC=0x110001
++ 0b011100000000000100 //illOp
++ 0b011100000000000100 //illOp
++ 0b000000111001101100 //CMPEQC=0x110100
++ 0b000000111010101100 //CMPLTC=0x110101
++ 0b000000111011101100 //CMPLEC=0x110110
++ 0b011100000000000100 //illOp
++ 0b000000101100001100 //ANDC=0x111000
++ 0b000000101111001100 //ORC=0x111001
++ 0b000000101011001100 //XORC=0x111010
++ 0b011100000000000100 //illOp
++ 0b000000110000001100 //SHLC=0x111100
++ 0b000000110000101100 //SHRC=0x111101
++ 0b000000110001101100 //SRAC=0x111110
++ 0b011100000000000100 //illOp
++ )
+Xselectbeq id[31:26] 0 vdd vdd vdd 0 vdd beqflag checkop
+Xselectbne id[31:26] 0 vdd vdd vdd vdd 0 bneflag checkop
+Xinvz zflag invzflag inverter
+Xmuxbeq beqflag#3 bneflag#3 xpcsel[2:0] 0 0 zflag 0 0 invzflag 0#3 xpcselb[2:0] mux4
+Xirqmux irq#18 irqe#18
++ xpcselb[2:0] xwasel xasel xra2sel xbsel xalufn[5:0] xwdsel[1:0] xwerf xmoe xwr
++ vdd 0 0 vdd 0 0 0 0#6 0#2 vdd 0 0
++ xpcselb[2:0] xwasel xasel xra2sel xbsel xalufn[5:0] xwdsel[1:0] xwerf xmoe xwr
++ xpcselb[2:0] xwasel xasel xra2sel xbsel xalufn[5:0] xwdsel[1:0] xwerf xmoe xwr
++ xpcselx[2:0] xwaselx xaselx xra2selx xbselx xalufnx[5:0] xwdselx[1:0] xwerfx xmoex xwrx
++ mux4
+Xresetmux reset#18 xpcselx[2:0] xwaselx xaselx xra2selx xbselx xalufnx[5:0] xwdselx[1:0] xwerfx xmoex xwrx
++ 0#18
++ pcsel[2:0] wasel asel ra2sel bsel alufn[5:0] wdsel[1:0] werf moe wr
++ mux2
+.ends

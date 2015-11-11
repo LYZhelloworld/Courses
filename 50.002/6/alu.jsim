@@ -1,0 +1,67 @@
+*.include "../../nominal.jsim"
+*.include "../../stdcell.jsim"
+*.include "../../lab3checkoff_6.jsim"
+
+* Half Adder
+.subckt HA a b s c
+Xxor a b s xor2
+Xand a b c and2
+.ends
+
+* Full Adder
+.subckt FA a b cin s c
+Xha1 a b s1 c1 HA
+Xha2 s1 cin s c2 HA
+Xor c1 c2 c or2
+.ends
+
+* Adder
+.subckt adder32 ALUFN0 A[31:0] B[31:0] s[31:0] z v n
+Xxor B[31:0] ALUFN0#32 opb[31:0] xor2 //Invert B for subtraction
+Xadd A[0:31] opb[0:31] ALUFN0 carry[1:31] s[0:31] carry[1:32] FA //Add A with processed B
+
+* Z flag
+Xzflag1 s[0:28:4] s[1:29:4] s[2:30:4] s[3:31:4] zout1[0:7] nor4 //4 bits a group, do NOR
+Xzflag2 zout1[0:4:4] zout1[1:5:4] zout1[2:6:4] zout1[3:7:4] zout2[0:1] and4 //AND them together
+Xzout zout20 zout21 z and2
+
+* V flag
+Xinv s31 A31 opb31 s31inv A31inv opb31inv inverter //prepare inverted variables
+Xvand A31 A31inv opb31 opb31inv s31inv s31 vout1 vout2 and3 //vout1 = A31 AND b31 AND ~S31, vout2 = ~A31 AND ~B31 AND S31
+Xvout vout1 vout2 v or2 //result = vout1 OR vout2
+* N flag
+.connect n s31 //directly connect s31 to n
+.ends 
+
+* Boole
+.subckt boole32 ALUFN[3:0] A[31:0] B[31:0] boole[31:0]
+Xmux A[31:0] B[31:0] ALUFN0#32 ALUFN1#32 ALUFN2#32 ALUFN3#32 boole[31:0] mux4 //4 ALUFNs are truth table
+.ends
+
+* Shift
+.subckt shift32 ALUFN[1:0] A[31:0] B[4:0] shift[31:0]
+Xfill ALUFN1 0 A31 fillbit mux2 //The bit to be filled when doing SHR or SRA
+* Whether to shift or not
+Xmuxb B4#32 B3#32 B2#32 B1#32 B0#32 A[31:0] zb[4:1][31:0] shb[5:1][31:0] zb[4:1][31:0] shift[31:0] mux2
+* Whether to shift left or right
+Xshb ALUFN0#160 A[15:0] 0#16 zb4[23:0] 0#8 zb3[27:0] 0#4 zb2[29:0] 0#2 zb1[30:0] 0#1 fillbit#16 A[31:16] fillbit#8 zb4[31:8] fillbit#4 zb3[31:4] fillbit#2 zb2[31:2] fillbit zb1[31:1] shb5[31:0] shb4[31:0] shb3[31:0] shb2[31:0] shb1[31:0] mux2
+.ends
+
+* Compare
+.subckt compare32 ALUFN[2:1] z v n cmp[31:0]
+.connect cmp[31:1] 0#31 //High 31 bits are 0
+Xor requal rless cmp0 or2 //result
+.connect equal z //equal is Z-flag
+Xxor v n less xor2 //v XOR n = less
+Xand equal less ALUFN[1:2] requal rless and2 //use AND gate to decide which result to output
+.ends 
+
+* ALU
+.subckt alu ALUFN[5:0] A[31:0] B[31:0] alu[31:0] z v n
+Xadd ALUFN0 A[31:0] B[31:0] sadd[31:0] z v n adder32
+Xboole ALUFN[3:0] A[31:0] B[31:0] sboole[31:0] boole32
+Xshift ALUFN[1:0] A[31:0] B[4:0] sshift[31:0] shift32
+Xcomp ALUFN[2:1] z v n scmp[31:0] compare32
+
+Xselector ALUFN4#32 ALUFN5#32 sadd[31:0] sboole[31:0] sshift[31:0] scmp[31:0] alu[31:0] mux4
+.ends

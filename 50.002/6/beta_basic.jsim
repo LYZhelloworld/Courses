@@ -1,0 +1,17 @@
+.include "../../nominal.jsim"
+.include "../../stdcell.jsim"
+.include "../../lab6basicblock.jsim"
+
+.include "ctl.jsim"
+.include "pc.jsim"
+.include "regfile.jsim"
+.include "alu.jsim"
+
+.subckt beta clk reset ia[31:0] id[31:0] ma[31:0] moe mrd[31:0] wr mwd[31:0]
+Xpc clk reset ia[31:0] pc
+Xregfile clk werf ra2sel id[20:16] id[15:11] id[25:21] wdata[31:0] radata[31:0] mwd[31:0] regfile
+Xctl reset id[31:26] ra2sel bsel alufn[5:0] wdsel[1:0] werf moe wr ctl
+Xbselmux bsel#32 mwd[31:0] id15#16 id[15:0] rbdata[31:0] mux2
+Xalu alufn[5:0] radata[31:0] rbdata[31:0] ma[31:0] zflag vflag nflag alu
+Xwdselmux wdsel0#32 wdsel1#32 0#32 ma[31:0] mrd[31:0] 0#32 wdata[31:0] mux4
+.ends

@@ -1,0 +1,7 @@
+.include "../../nominal.jsim"
+.include "../../stdcell.jsim"
+.include "../../lab3boolean.jsim"
+
+.subckt boole32 ALUFN[3:0] A[31:0] B[31:0] boole[31:0]
+Xmux A[31:0] B[31:0] ALUFN0#32 ALUFN1#32 ALUFN2#32 ALUFN3#32 boole[31:0] mux4
+.ends

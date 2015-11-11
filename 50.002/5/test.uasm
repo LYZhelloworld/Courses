@@ -1,0 +1,21 @@
+.include beta.uasm
+	
+	CMOVE(4, R1)		
+	PUSH(R1)		
+	BR(square,LP)		
+	HALT()
+
+square:				
+	PUSH(LP)
+	PUSH(BP)		
+	MOVE(SP,BP)	
+
+	PUSH(R2)		
+	LD(BP,-12,R2)		
+	MUL(R2,R2,R0)	
+	POP(R2)
+
+	MOVE(BP,SP)
+	POP(BP)
+	POP(LP)
+	JMP(LP)

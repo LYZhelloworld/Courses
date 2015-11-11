@@ -1,0 +1,120 @@
+.include beta.uasm
+.include ../../lab5checkoff.uasm
+
+count_bull_cows:	| your subroutine must have this name  
+	PUSH(LP)	| standard subroutine entry sequence 
+ 	PUSH(BP) 
+	MOVE(SP, BP) 
+
+	| registers used
+	bulls = R1
+	cows = R2
+	i = R3
+	j = R4
+	btemp = R5
+	atry = R6
+	btry = R7
+	mask = R8
+	a = R9
+	b = R10
+	tmp1 = R11
+	tmp2 = R12
+
+	| PUSH any registers (besides R0) used by your code |
+	PUSH(bulls)
+	PUSH(cows)
+	PUSH(i)
+	PUSH(j)
+	PUSH(btemp)
+	PUSH(atry)
+	PUSH(btry)
+	PUSH(mask)
+	PUSH(a)
+	PUSH(b)
+	PUSH(tmp1)
+	PUSH(tmp2)
+	
+	| your code here, leave score in R0 |
+	LD(BP,-16,a)
+	LD(BP,-12,b)
+	CMOVE(0,bulls)					| bulls = 0;
+	CMOVE(0xF,mask)					| mask = 0xF;
+	
+	CMOVE(0,i)						| for(i=0;i<4;i++) {
+loop_bull_start:
+	CMPLTC(i,4,tmp1)
+	BEQ(tmp1,loop_bull_end)
+	AND(a,mask,tmp1)				| tmp1 = a & mask
+	AND(b,mask,tmp2)				| tmp2 = b & mask
+	CMPEQ(tmp1,tmp2,tmp1)			| if(tmp1 == tmp2) {
+	BEQ(tmp1,endif_tmp1_eq_tmp2)
+	ADDC(bulls,1,bulls)				| 	bulls++;
+	OR(a,mask,a)					| 	a = a | mask;
+	OR(b,mask,b)					| 	b = b | mask;
+endif_tmp1_eq_tmp2:					| }
+	SHLC(mask,4,mask)				| mask <<= 4
+	ADDC(i,1,i)
+	BR(loop_bull_start)
+loop_bull_end:						| }
+	
+	CMOVE(0,cows)					| cows = 0;
+	CMOVE(0,i)						| for(i=0;i<4;i++) {
+loop_cow_start:
+	CMPLTC(i,4,tmp1)
+	BEQ(tmp1,loop_cow_end)
+	
+	ANDC(a,0xF,atry)					| atry = a & 0xF;
+	SHRC(a,4,a)						| a >>= 4;
+	CMPEQC(atry,0xF,tmp1)			| if (atry != 0xF) {
+	BNE(tmp1,endif_atry_ne_0xF)
+	MOVE(b,btemp)					| btemp = b;
+	CMOVE(0xF,mask)					| mask = 0xF;
+	
+	CMOVE(0,j)						| for(j=0;j<4;j++) {
+loop_j_start:
+	CMPLTC(j,4,tmp1)
+	BEQ(tmp1,loop_j_end)
+	ANDC(btemp,0xF,btry)			| btry = btemp & 0xF;
+	SHRC(btemp,4,btemp)				| btemp >>= 4;
+	CMPEQ(btry,atry,tmp1)			| if (btry == atry) {
+	BEQ(tmp1,endif_btry_eq_atry)
+	ADDC(cows,1,cows)				| cows++;
+	OR(b,mask,b)					| b |= mask
+	BR(loop_j_end)					| break;
+endif_btry_eq_atry:					| }
+	SHLC(mask,4,mask)				| mask <<= 4;
+	ADDC(j,1,j)
+	BR(loop_j_start)
+loop_j_end:							| }
+endif_atry_ne_0xF:					| }
+	ADDC(i,1,i)
+	BR(loop_cow_start)
+loop_cow_end:						| }
+	
+	MOVE(bulls,R0)
+	SHLC(R0,4,R0)
+	ADD(R0,cows,R0)					| return (bulls << 4) + cows;
+	
+	| POP saved registers |
+	POP(tmp2)
+	POP(tmp1)
+	POP(b)
+	POP(a)
+	POP(mask)
+	POP(btry)
+	POP(atry)
+	POP(btemp)
+	POP(j)
+	POP(i)
+	POP(cows)
+	POP(bulls)
+
+	MOVE(BP,SP)	| standard subroutine exit sequence 
+	POP(BP)
+	POP(LP)
+ 
+	RTN() 
+
+ StackBase:	LONG(.+4)	| Pointer to bottom of stack  
+	. = .+0x1000 
+	| Reserve space for stack...

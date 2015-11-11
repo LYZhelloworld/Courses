@@ -1,0 +1,34 @@
+.include "../../nominal.jsim"
+.include "../../stdcell.jsim"
+.include "../../lab6checkoff.jsim"
+
+.include "ctl_full.jsim"
+.include "pc_full.jsim"
+.include "regfile_full.jsim"
+.include "alu.jsim"
+
+.subckt nor32 input[31:0] z
+Xnor1 input[31:0] result1[7:0] nor4
+Xand1 result1[7:0] result2[1:0] and4
+Xand2 result2[1:0] z and2
+.ends
+
+.subckt addr op1[31:0] op2[31:0] r[31:0]
+Xha op10 op20 r0 c0 HA
+Xfa op1[30:1] op2[30:1] c[29:0] r[30:1] c[30:1] FA
+.connect r31 0
+.ends
+
+.subckt beta clk reset irq ia[31:0] id[31:0] ma[31:0] moe mrd[31:0] wr mwd[31:0]
+Xpc clk reset pcsel[2:0] ia[31:0] nextia[31:0] bria[31:0] radatax[31:0] pc
+Xregfile clk werf ra2sel id[20:16] id[15:11] regc[4:0] wdata[31:0] radatax[31:0] mwd[31:0] regfile
+Xctl reset reg1zero irq ia31 id[31:26] pcsel[2:0] wasel asel ra2sel bsel alufn[5:0] wdsel[1:0] werf moe wr ctl
+
+Xbselmux bsel#32 mwd[31:0] id15#16 id[15:0] rbdata[31:0] mux2
+Xaselmux asel#32 radatax[31:0] bria[31:0] radata[31:0] mux2
+Xwaselmux wasel#5 id[25:21] vdd vdd vdd vdd 0 regc[4:0] mux2
+Xctlzflag radatax[31:0] reg1zero nor32
+Xalu alufn[5:0] radata[31:0] rbdata[31:0] ma[31:0] zflag vflag nflag alu
+Xwdselmux wdsel0#32 wdsel1#32 nextia[31:0] ma[31:0] mrd[31:0] 0#32 wdata[31:0] mux4
+Xaddr nextia[31:0] id15#16 id[13:0] 0#2 bria[31:0] addr
+.ends

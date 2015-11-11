@@ -1,0 +1,11 @@
+.include "../../nominal.jsim"
+.include "../../8clocks.jsim"
+.include "library.jsim"
+
+Xtest clk2 clk1 clk3 s c FA
+.tran 60ns
+.plot clk3
+.plot clk2
+.plot clk1
+.plot s
+.plot c

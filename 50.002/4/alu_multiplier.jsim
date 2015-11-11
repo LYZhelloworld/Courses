@@ -1,0 +1,143 @@
+.include "../../nominal.jsim"
+.include "../../stdcell.jsim"
+.include "../../lab3multiply.jsim"
+
+* Half Adder
+.subckt HA a b s c
+Xxor a b s xor2
+Xand a b c and2
+.ends
+
+* Full Adder
+.subckt FA a b cin s c
+Xha1 a b s1 c1 HA
+Xha2 s1 cin s c2 HA
+Xor c1 c2 c or2
+.ends
+
+* Adder
+.subckt adder32 ALUFN0 A[31:0] B[31:0] s[31:0] z v n
+Xxor B[31:0] ALUFN0#32 opb[31:0] xor2 //Invert B for subtraction
+Xadd A[0:31] opb[0:31] ALUFN0 carry[1:31] s[0:31] carry[1:32] FA //Add A with processed B
+
+* Z flag
+Xzflag1 s[0:28:4] s[1:29:4] s[2:30:4] s[3:31:4] zout1[0:7] nor4 //4 bits a group, do NOR
+Xzflag2 zout1[0:4:4] zout1[1:5:4] zout1[2:6:4] zout1[3:7:4] zout2[0:1] and4 //AND them together
+Xzout zout20 zout21 z and2
+
+* V flag
+Xinv s31 A31 opb31 s31inv A31inv opb31inv inverter //prepare inverted variables
+Xvand A31 A31inv opb31 opb31inv s31inv s31 vout1 vout2 and3 //vout1 = A31 AND b31 AND ~S31, vout2 = ~A31 AND ~B31 AND S31
+Xvout vout1 vout2 v or2 //result = vout1 OR vout2
+* N flag
+.connect n s31 //directly connect s31 to n
+.ends 
+
+* Boole
+.subckt boole32 ALUFN[3:0] A[31:0] B[31:0] boole[31:0]
+Xmux A[31:0] B[31:0] ALUFN0#32 ALUFN1#32 ALUFN2#32 ALUFN3#32 boole[31:0] mux4 //4 ALUFNs are truth table
+.ends
+
+* Shift
+.subckt shift32 ALUFN[1:0] A[31:0] B[4:0] shift[31:0]
+Xfill ALUFN1 0 A31 fillbit mux2 //The bit to be filled when doing SHR or SRA
+* Whether to shift or not
+Xmuxb B4#32 B3#32 B2#32 B1#32 B0#32 A[31:0] zb[4:1][31:0] shb[5:1][31:0] zb[4:1][31:0] shift[31:0] mux2
+* Whether to shift left or right
+Xshb ALUFN0#160 A[15:0] 0#16 zb4[23:0] 0#8 zb3[27:0] 0#4 zb2[29:0] 0#2 zb1[30:0] 0#1 fillbit#16 A[31:16] fillbit#8 zb4[31:8] fillbit#4 zb3[31:4] fillbit#2 zb2[31:2] fillbit zb1[31:1] shb5[31:0] shb4[31:0] shb3[31:0] shb2[31:0] shb1[31:0] mux2
+.ends
+
+* Compare
+.subckt compare32 ALUFN[2:1] z v n cmp[31:0]
+.connect cmp[31:1] 0#31 //High 31 bits are 0
+Xor requal rless cmp0 or2 //result
+.connect equal z //equal is Z-flag
+Xxor v n less xor2 //v XOR n = less
+Xand equal less ALUFN[1:2] requal rless and2 //use AND gate to decide which result to output
+.ends 
+
+* ALU
+/*
+.subckt alu ALUFN[5:0] A[31:0] B[31:0] alu[31:0] z v n
+Xadd ALUFN0 A[31:0] B[31:0] sadd[31:0] z v n adder32
+Xboole ALUFN[3:0] A[31:0] B[31:0] sboole[31:0] boole32
+Xshift ALUFN[1:0] A[31:0] B[4:0] sshift[31:0] shift32
+Xcomp ALUFN[2:1] z v n scmp[31:0] compare32
+
+Xselector ALUFN4#32 ALUFN5#32 sadd[31:0] sboole[31:0] sshift[31:0] scmp[31:0] alu[31:0] mux4
+.ends*/
+
+* Multiplier
+.subckt alu ALUFN[5:0] A[31:0] B[31:0] alu[31:0] z v n
+Xand A[31:0] A[30:0] A[29:0] A[28:0] A[27:0] A[26:0] A[25:0] A[24:0] A[23:0] A[22:0] A[21:0] A[20:0] A[19:0] A[18:0] A[17:0] A[16:0] A[15:0] A[14:0] A[13:0] A[12:0] A[11:0] A[10:0] A[9:0] A[8:0] A[7:0] A[6:0] A[5:0] A[4:0] A[3:0] A[2:0] A[1:0] A[0:0] B[0:31] B[0:30] B[0:29] B[0:28] B[0:27] B[0:26] B[0:25] B[0:24] B[0:23] B[0:22] B[0:21] B[0:20] B[0:19] B[0:18] B[0:17] B[0:16] B[0:15] B[0:14] B[0:13] B[0:12] B[0:11] B[0:10] B[0:9] B[0:8] B[0:7] B[0:6] B[0:5] B[0:4] B[0:3] B[0:2] B[0:1] B[0:0] s31_[0:31] s30_[0:30] s29_[0:29] s28_[0:28] s27_[0:27] s26_[0:26] s25_[0:25] s24_[0:24] s23_[0:23] s22_[0:22] s21_[0:21] s20_[0:20] s19_[0:19] s18_[0:18] s17_[0:17] s16_[0:16] s15_[0:15] s14_[0:14] s13_[0:13] s12_[0:12] s11_[0:11] s10_[0:10] s9_[0:9] s8_[0:8] s7_[0:7] s6_[0:6] s5_[0:5] s4_[0:4] s3_[0:3] s2_[0:2] s1_[0:1] s0_[0:0] and2
+
+.connect s31_0 r31_0
+.connect s30_0 r30_0
+.connect s29_0 r29_0
+.connect s28_0 r28_0
+.connect s27_0 r27_0
+.connect s26_0 r26_0
+.connect s25_0 r25_0
+.connect s24_0 r24_0
+.connect s23_0 r23_0
+.connect s22_0 r22_0
+.connect s21_0 r21_0
+.connect s20_0 r20_0
+.connect s19_0 r19_0
+.connect s18_0 r18_0
+.connect s17_0 r17_0
+.connect s16_0 r16_0
+.connect s15_0 r15_0
+.connect s14_0 r14_0
+.connect s13_0 r13_0
+.connect s12_0 r12_0
+.connect s11_0 r11_0
+.connect s10_0 r10_0
+.connect s9_0 r9_0
+.connect s8_0 r8_0
+.connect s7_0 r7_0
+.connect s6_0 r6_0
+.connect s5_0 r5_0
+.connect s4_0 r4_0
+.connect s3_0 r3_0
+.connect s2_0 r2_0
+.connect s1_0 r1_0
+.connect s0_0 r0_0
+
+Xfa r31_[0:30] r30_[0:29] r29_[0:28] r28_[0:27] r27_[0:26] r26_[0:25] r25_[0:24] r24_[0:23] r23_[0:22] r22_[0:21] r21_[0:20] r20_[0:19] r19_[0:18] r18_[0:17] r17_[0:16] r16_[0:15] r15_[0:14] r14_[0:13] r13_[0:12] r12_[0:11] r11_[0:10] r10_[0:9] r9_[0:8] r8_[0:7] r7_[0:6] r6_[0:5] r5_[0:4] r4_[0:3] r3_[0:2] r2_[0:1] r1_[0:0] s31_[1:31] s30_[1:30] s29_[1:29] s28_[1:28] s27_[1:27] s26_[1:26] s25_[1:25] s24_[1:24] s23_[1:23] s22_[1:22] s21_[1:21] s20_[1:20] s19_[1:19] s18_[1:18] s17_[1:17] s16_[1:16] s15_[1:15] s14_[1:14] s13_[1:13] s12_[1:12] s11_[1:11] s10_[1:10] s9_[1:9] s8_[1:8] s7_[1:7] s6_[1:6] s5_[1:5] s4_[1:4] s3_[1:3] s2_[1:2] s1_[1:1] c30_[1:30] 0 c29_[1:29] 0 c28_[1:28] 0 c27_[1:27] 0 c26_[1:26] 0 c25_[1:25] 0 c24_[1:24] 0 c23_[1:23] 0 c22_[1:22] 0 c21_[1:21] 0 c20_[1:20] 0 c19_[1:19] 0 c18_[1:18] 0 c17_[1:17] 0 c16_[1:16] 0 c15_[1:15] 0 c14_[1:14] 0 c13_[1:13] 0 c12_[1:12] 0 c11_[1:11] 0 c10_[1:10] 0 c9_[1:9] 0 c8_[1:8] 0 c7_[1:7] 0 c6_[1:6] 0 c5_[1:5] 0 c4_[1:4] 0 c3_[1:3] 0 c2_[1:2] 0 c1_[1:1] 0 0 r31_[1:31] r30_[1:30] r29_[1:29] r28_[1:28] r27_[1:27] r26_[1:26] r25_[1:25] r24_[1:24] r23_[1:23] r22_[1:22] r21_[1:21] r20_[1:20] r19_[1:19] r18_[1:18] r17_[1:17] r16_[1:16] r15_[1:15] r14_[1:14] r13_[1:13] r12_[1:12] r11_[1:11] r10_[1:10] r9_[1:9] r8_[1:8] r7_[1:7] r6_[1:6] r5_[1:5] r4_[1:4] r3_[1:3] r2_[1:2] r1_[1:1] c31_[1:31] c30_[1:30] c29_[1:29] c28_[1:28] c27_[1:27] c26_[1:26] c25_[1:25] c24_[1:24] c23_[1:23] c22_[1:22] c21_[1:21] c20_[1:20] c19_[1:19] c18_[1:18] c17_[1:17] c16_[1:16] c15_[1:15] c14_[1:14] c13_[1:13] c12_[1:12] c11_[1:11] c10_[1:10] c9_[1:9] c8_[1:8] c7_[1:7] c6_[1:6] c5_[1:5] c4_[1:4] c3_[1:3] c2_[1:2] c1_[1:1] FA
+
+.connect r31_31 alu31
+.connect r30_30 alu30
+.connect r29_29 alu29
+.connect r28_28 alu28
+.connect r27_27 alu27
+.connect r26_26 alu26
+.connect r25_25 alu25
+.connect r24_24 alu24
+.connect r23_23 alu23
+.connect r22_22 alu22
+.connect r21_21 alu21
+.connect r20_20 alu20
+.connect r19_19 alu19
+.connect r18_18 alu18
+.connect r17_17 alu17
+.connect r16_16 alu16
+.connect r15_15 alu15
+.connect r14_14 alu14
+.connect r13_13 alu13
+.connect r12_12 alu12
+.connect r11_11 alu11
+.connect r10_10 alu10
+.connect r9_9 alu9
+.connect r8_8 alu8
+.connect r7_7 alu7
+.connect r6_6 alu6
+.connect r5_5 alu5
+.connect r4_4 alu4
+.connect r3_3 alu3
+.connect r2_2 alu2
+.connect r1_1 alu1
+.connect r0_0 alu0
+
+.connect z v n 0
+.ends

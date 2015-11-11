@@ -1,0 +1,13 @@
+*.include "../../nominal.jsim"
+*.include "../../stdcell.jsim"
+*.include "../../lab6pc.jsim"
+
+.subckt pc clk reset ia[31:0]
+Xpcreg d[31:0] clk#32 ia[31:0] dreg
+.connect newq[1:0] 0#2
+Xsumq2 ia2 newq2 inverter
+.connect carryq2 ia2
+Xsumq carryq[30:2] ia[31:3] newq[31:3] xor2
+Xcarryq carryq[29:2] ia[30:3] carryq[30:3] and2
+Xresetmux reset#32 newq[31:0] 0#32 d[31:0] mux2
+.ends

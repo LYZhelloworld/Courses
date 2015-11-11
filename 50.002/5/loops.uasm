@@ -1,0 +1,13 @@
+.include beta.uasm
+
+	CMOVE(5, R2)
+	CMOVE(0, R3)
+	CMOVE(0, R1)
+loopbegin:
+	CMPLT(R1, R2, R4)
+	BEQ(R4, endloop)
+	ADD(R3, R1, R3)
+	ADDC(R1, 1, R1)
+	BR(loopbegin)
+endloop:
+	HALT()

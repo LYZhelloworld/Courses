@@ -1,0 +1,28 @@
+*.include "../../nominal.jsim"
+*.include "../../stdcell.jsim"
+
+.subckt mux5 s0 s1 s2 d0 d1 d2 d3 d4 z
+Xmux1 s0 s1 d0 d1 d2 d3 sel1 mux4
+Xmux2 s2 sel1 d4 z mux2
+.ends
+
+.subckt pc clk reset pcsel[2:0] ia[31:0] nextia[31:0] bria[31:0] jmpia[31:0]
+Xpcreg d[31:0] clk#32 ia[31:0] dreg
+
+.connect nextia[1:0] 0#2
+Xsumq2 ia2 nextia2 inverter
+.connect carryq2 ia2
+Xsumq carryq[29:2] ia[30:3] nextia[30:3] xor2
+Xcarryq carryq[28:2] ia[29:3] carryq[29:3] and2
+.connect nextia31 ia31
+Xresetmux reset#32 nextia[31:0] vdd 0#31 newia[31:0] mux2
+Xjt31mux jmpia31 ia31 ia31 ia31 0 vdd jmp31bit mux4
+
+Xpcselmux pcsel0#32 pcsel1#32 pcsel2#32
++ newia[31:0] //0
++ ia31 bria[30:0] //1
++ jmp31bit jmpia[30:0] //2: Reset most significant bit or leave it unchanged
++ vdd 0#28 vdd 0 0 //0x80000004
++ vdd 0#27 vdd 0 0 0 //0x80000008
++ d[31:0] mux5
+.ends

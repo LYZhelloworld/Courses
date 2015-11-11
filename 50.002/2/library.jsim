@@ -1,0 +1,58 @@
+* NOR
+.subckt nor2 a b z
+MPD1 z a 0 0 NENH sw=2 sl=1
+MPD2 z b 0 0 NENH sw=2 sl=1
+MPU1 1 a vdd vdd PENH sw=4 sl=1
+MPU2 z b 1 vdd PENH sw=4 sl=1
+.ends
+
+* NAND
+.subckt nand2 a b z
+MPD1 z a 1 0 NENH sw=2 sl=1
+MPD2 1 b 0 0 NENH sw=2 sl=1
+MPU1 z a vdd vdd PENH sw=4 sl=1
+MPU2 z b vdd vdd PENH sw=4 sl=1
+.ends
+
+* INVERTER
+.subckt inv a z
+MPD1 z a 0 0 NENH sw=2 sl=1
+MPU1 z a vdd vdd PENH sw=4 sl=1
+.ends
+
+* XOR
+.subckt xor2 a b z
+Xnor a b 1 nor2
+MPD1 z a 3 0 NENH sw=2 sl=1
+MPD2 3 b 0 0 NENH sw=2 sl=1
+MPD3 z 1 0 0 NENH sw=2 sl=1
+MPU1 2 a vdd vdd PENH sw=4 sl=1
+MPU2 z 1 2 vdd PENH sw=4 sl=1
+MPU3 2 b vdd vdd PENH sw=4 sl=1
+.ends
+
+* XNOR
+.subckt xnor2 a b z
+Xnand a b 1 nand2
+MPD1 z 1 3 0 NENH sw=2 sl=1
+MPD2 3 a 0 0 NENH sw=2 sl=1
+MPD3 3 b 0 0 NENH sw=2 sl=1
+MPU1 z 1 vdd vdd PENH sw=4 sl=1
+MPU2 2 a vdd vdd PENH sw=4 sl=1
+MPU3 z b 2 vdd PENH sw=4 sl=1
+.ends
+
+* Half Adder
+.subckt HA a b s c
+Xxor a b s xor2
+Xnand a b 1 nand2
+Xinv 1 c inv
+.ends
+
+* Full Adder
+.subckt FA a b cin s c
+Xha1 a b s1 c1 HA
+Xha2 s1 cin s c2 HA
+Xnor c1 c2 nc nor2
+Xinv nc c inv
+.ends
