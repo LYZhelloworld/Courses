@@ -9,3 +9,5 @@ Source code of ISTD courses, assignments, projects, etc. All rights reserved.
 * 50.007 -- Machine Learning
 * 50.008 -- Database
 * 50.012 -- Networks
+* 50.020 -- Security
+* 50.021 -- Artificial Intelligence
