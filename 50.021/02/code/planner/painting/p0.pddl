@@ -1,0 +1,6 @@
+(define (problem p0)
+    (:domain painting)
+    (:objects a sprayer red green)
+    (:init (clear a) (arm-empty) (clear sprayer) (on-table a) (on-table sprayer) (color-of a red) (color-of sprayer green) (is-obj a) (is-obj sprayer) (is-box a) (is-sprayer sprayer))
+    (:goal (and (color-of a green)))
+)
