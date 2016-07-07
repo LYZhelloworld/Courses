@@ -1,5 +1,5 @@
 # ISTD Courses
-Source code of ISTD courses, assignments, projects, etc. All rights reserved.
+Source code of ISTD courses, assignments, projects, etc.
 
 * 50.001 -- Introduction to Information Systems and Programming
 * 50.002 -- Computational Structures
