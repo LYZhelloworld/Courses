@@ -1,0 +1,78 @@
+
+*** Data Prefetching Championship 2 Simulator ***
+
+Warmup Instructions: 10000000
+Simulation Instructions: 100000000
+Scramble loads OFF
+Using 1MB Last Level Cache
+Using 12.8 GB/s DRAM bandwidth
+IP-based Stride Prefetcher
+Knobs visible from prefetcher: 0 0 0
+Instructions Retired: 100001 Cycle: 51401 Hearbeat IPC: 1.945507 Cumulative IPC: 1.945507
+Prefetcher heartbeat stats
+Instructions Retired: 200000 Cycle: 87212 Hearbeat IPC: 2.792410 Cumulative IPC: 2.293262
+Prefetcher heartbeat stats
+Instructions Retired: 300003 Cycle: 121004 Hearbeat IPC: 2.959369 Cumulative IPC: 2.479282
+Prefetcher heartbeat stats
+Instructions Retired: 400002 Cycle: 153162 Hearbeat IPC: 3.109615 Cumulative IPC: 2.611627
+Prefetcher heartbeat stats
+Instructions Retired: 500000 Cycle: 317752 Hearbeat IPC: 0.607558 Cumulative IPC: 1.573554
+Prefetcher heartbeat stats
+Instructions Retired: 600001 Cycle: 435231 Hearbeat IPC: 0.851224 Cumulative IPC: 1.378581
+Prefetcher heartbeat stats
+Instructions Retired: 700001 Cycle: 473499 Hearbeat IPC: 2.613149 Cumulative IPC: 1.478358
+Prefetcher heartbeat stats
+Instructions Retired: 800000 Cycle: 507770 Hearbeat IPC: 2.917890 Cumulative IPC: 1.575516
+Prefetcher heartbeat stats
+Instructions Retired: 900001 Cycle: 542800 Hearbeat IPC: 2.854724 Cumulative IPC: 1.658071
+Prefetcher heartbeat stats
+Instructions Retired: 1000002 Cycle: 574869 Hearbeat IPC: 3.118307 Cumulative IPC: 1.739530
+Prefetcher heartbeat stats
+Instructions Retired: 1100000 Cycle: 606809 Hearbeat IPC: 3.130808 Cumulative IPC: 1.812762
+Prefetcher heartbeat stats
+Instructions Retired: 1200000 Cycle: 654023 Hearbeat IPC: 2.118016 Cumulative IPC: 1.834798
+Prefetcher heartbeat stats
+Instructions Retired: 1300001 Cycle: 705909 Hearbeat IPC: 1.927321 Cumulative IPC: 1.841599
+Prefetcher heartbeat stats
+Instructions Retired: 1400000 Cycle: 739468 Hearbeat IPC: 2.979797 Cumulative IPC: 1.893253
+Prefetcher heartbeat stats
+Instructions Retired: 1500003 Cycle: 773000 Hearbeat IPC: 2.982315 Cumulative IPC: 1.940495
+Prefetcher heartbeat stats
+Instructions Retired: 1600000 Cycle: 808832 Hearbeat IPC: 2.790718 Cumulative IPC: 1.978161
+Prefetcher heartbeat stats
+Instructions Retired: 1700000 Cycle: 840740 Hearbeat IPC: 3.134010 Cumulative IPC: 2.022028
+Prefetcher heartbeat stats
+Instructions Retired: 1800000 Cycle: 872764 Hearbeat IPC: 3.122658 Cumulative IPC: 2.062413
+Prefetcher heartbeat stats
+Instructions Retired: 1900001 Cycle: 911610 Hearbeat IPC: 2.574293 Cumulative IPC: 2.084226
+Prefetcher heartbeat stats
+Instructions Retired: 2000004 Cycle: 959364 Hearbeat IPC: 2.094128 Cumulative IPC: 2.084719
+Prefetcher heartbeat stats
+Instructions Retired: 2100001 Cycle: 992387 Hearbeat IPC: 3.028102 Cumulative IPC: 2.116111
+Prefetcher heartbeat stats
+Instructions Retired: 2200000 Cycle: 1026314 Hearbeat IPC: 2.947475 Cumulative IPC: 2.143594
+Prefetcher heartbeat stats
+Instructions Retired: 2300001 Cycle: 1061803 Hearbeat IPC: 2.817803 Cumulative IPC: 2.166128
+Prefetcher heartbeat stats
+Instructions Retired: 2400001 Cycle: 1093697 Hearbeat IPC: 3.135386 Cumulative IPC: 2.194393
+Prefetcher heartbeat stats
+Instructions Retired: 2500000 Cycle: 1125680 Hearbeat IPC: 3.126630 Cumulative IPC: 2.220880
+Prefetcher heartbeat stats
+Instructions Retired: 2600000 Cycle: 1161578 Hearbeat IPC: 2.785671 Cumulative IPC: 2.238334
+Prefetcher heartbeat stats
+Instructions Retired: 2700003 Cycle: 1260355 Hearbeat IPC: 1.012412 Cumulative IPC: 2.142256
+Prefetcher heartbeat stats
+Instructions Retired: 2800001 Cycle: 1292477 Hearbeat IPC: 3.113069 Cumulative IPC: 2.166384
+Prefetcher heartbeat stats
+Instructions Retired: 2900004 Cycle: 1327639 Hearbeat IPC: 2.844065 Cumulative IPC: 2.184332
+Prefetcher heartbeat stats
+Instructions Retired: 3000000 Cycle: 1363916 Hearbeat IPC: 2.756457 Cumulative IPC: 2.199549
+Prefetcher heartbeat stats
+
+Simulation complete. Instructions retired: 3099755 Cycles elapsed: 1395974 IPC: 2.220496
+
+Prefetcher final stats
+
+real	0m36.040s
+user	0m34.792s
+sys	0m2.260s

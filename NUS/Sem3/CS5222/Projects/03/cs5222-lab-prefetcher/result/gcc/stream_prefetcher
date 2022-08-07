@@ -1,0 +1,78 @@
+
+*** Data Prefetching Championship 2 Simulator ***
+
+Warmup Instructions: 10000000
+Simulation Instructions: 100000000
+Scramble loads OFF
+Using 1MB Last Level Cache
+Using 12.8 GB/s DRAM bandwidth
+Streaming Prefetcher
+Knobs visible from prefetcher: 0 0 0
+Instructions Retired: 100001 Cycle: 138555 Hearbeat IPC: 0.721742 Cumulative IPC: 0.721742
+Prefetcher heartbeat stats
+Instructions Retired: 200004 Cycle: 274029 Hearbeat IPC: 0.738171 Cumulative IPC: 0.729864
+Prefetcher heartbeat stats
+Instructions Retired: 300002 Cycle: 1255506 Hearbeat IPC: 0.101885 Cumulative IPC: 0.238949
+Prefetcher heartbeat stats
+Instructions Retired: 400000 Cycle: 2275824 Hearbeat IPC: 0.098007 Cumulative IPC: 0.175761
+Prefetcher heartbeat stats
+Instructions Retired: 500000 Cycle: 3240807 Hearbeat IPC: 0.103629 Cumulative IPC: 0.154283
+Prefetcher heartbeat stats
+Instructions Retired: 600003 Cycle: 4171544 Hearbeat IPC: 0.107445 Cumulative IPC: 0.143832
+Prefetcher heartbeat stats
+Instructions Retired: 700000 Cycle: 5105729 Hearbeat IPC: 0.107042 Cumulative IPC: 0.137101
+Prefetcher heartbeat stats
+Instructions Retired: 800003 Cycle: 6080758 Hearbeat IPC: 0.102564 Cumulative IPC: 0.131563
+Prefetcher heartbeat stats
+Instructions Retired: 900000 Cycle: 7016850 Hearbeat IPC: 0.106824 Cumulative IPC: 0.128263
+Prefetcher heartbeat stats
+Instructions Retired: 1000000 Cycle: 7182089 Hearbeat IPC: 0.605184 Cumulative IPC: 0.139235
+Prefetcher heartbeat stats
+Instructions Retired: 1100005 Cycle: 7376040 Hearbeat IPC: 0.515620 Cumulative IPC: 0.149132
+Prefetcher heartbeat stats
+Instructions Retired: 1200004 Cycle: 7567461 Hearbeat IPC: 0.522403 Cumulative IPC: 0.158574
+Prefetcher heartbeat stats
+Instructions Retired: 1300003 Cycle: 7760310 Hearbeat IPC: 0.518535 Cumulative IPC: 0.167519
+Prefetcher heartbeat stats
+Instructions Retired: 1400002 Cycle: 7956590 Hearbeat IPC: 0.509471 Cumulative IPC: 0.175955
+Prefetcher heartbeat stats
+Instructions Retired: 1500004 Cycle: 8158298 Hearbeat IPC: 0.495776 Cumulative IPC: 0.183862
+Prefetcher heartbeat stats
+Instructions Retired: 1600004 Cycle: 8363540 Hearbeat IPC: 0.487230 Cumulative IPC: 0.191307
+Prefetcher heartbeat stats
+Instructions Retired: 1700005 Cycle: 8555651 Hearbeat IPC: 0.520538 Cumulative IPC: 0.198700
+Prefetcher heartbeat stats
+Instructions Retired: 1800004 Cycle: 8750694 Hearbeat IPC: 0.512702 Cumulative IPC: 0.205698
+Prefetcher heartbeat stats
+Instructions Retired: 1900000 Cycle: 8939207 Hearbeat IPC: 0.530446 Cumulative IPC: 0.212547
+Prefetcher heartbeat stats
+Instructions Retired: 2000003 Cycle: 9124378 Hearbeat IPC: 0.540058 Cumulative IPC: 0.219193
+Prefetcher heartbeat stats
+Instructions Retired: 2100000 Cycle: 9319032 Hearbeat IPC: 0.513717 Cumulative IPC: 0.225345
+Prefetcher heartbeat stats
+Instructions Retired: 2200002 Cycle: 9512732 Hearbeat IPC: 0.516273 Cumulative IPC: 0.231269
+Prefetcher heartbeat stats
+Instructions Retired: 2300003 Cycle: 9706674 Hearbeat IPC: 0.515623 Cumulative IPC: 0.236951
+Prefetcher heartbeat stats
+Instructions Retired: 2400002 Cycle: 9894955 Hearbeat IPC: 0.531116 Cumulative IPC: 0.242548
+Prefetcher heartbeat stats
+Instructions Retired: 2500000 Cycle: 10083557 Hearbeat IPC: 0.530206 Cumulative IPC: 0.247928
+Prefetcher heartbeat stats
+Instructions Retired: 2600003 Cycle: 10280894 Hearbeat IPC: 0.506763 Cumulative IPC: 0.252897
+Prefetcher heartbeat stats
+Instructions Retired: 2700004 Cycle: 10468894 Hearbeat IPC: 0.531920 Cumulative IPC: 0.257907
+Prefetcher heartbeat stats
+Instructions Retired: 2800001 Cycle: 10664399 Hearbeat IPC: 0.511481 Cumulative IPC: 0.262556
+Prefetcher heartbeat stats
+Instructions Retired: 2900001 Cycle: 10852016 Hearbeat IPC: 0.533001 Cumulative IPC: 0.267232
+Prefetcher heartbeat stats
+Instructions Retired: 3000003 Cycle: 11041345 Hearbeat IPC: 0.528192 Cumulative IPC: 0.271706
+Prefetcher heartbeat stats
+
+Simulation complete. Instructions retired: 3099757 Cycles elapsed: 11229238 IPC: 0.276043
+
+Prefetcher final stats
+
+real	3m1.087s
+user	2m56.324s
+sys	0m5.656s

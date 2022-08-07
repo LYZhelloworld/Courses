@@ -1,0 +1,78 @@
+
+*** Data Prefetching Championship 2 Simulator ***
+
+Warmup Instructions: 10000000
+Simulation Instructions: 100000000
+Scramble loads OFF
+Using 1MB Last Level Cache
+Using 12.8 GB/s DRAM bandwidth
+Next-Line Prefetcher
+Knobs visible from prefetcher: 0 0 0
+Instructions Retired: 100001 Cycle: 129179 Hearbeat IPC: 0.774127 Cumulative IPC: 0.774127
+Prefetcher heartbeat stats
+Instructions Retired: 200004 Cycle: 254169 Hearbeat IPC: 0.800088 Cumulative IPC: 0.786894
+Prefetcher heartbeat stats
+Instructions Retired: 300002 Cycle: 1218079 Hearbeat IPC: 0.103742 Cumulative IPC: 0.246291
+Prefetcher heartbeat stats
+Instructions Retired: 400000 Cycle: 2184593 Hearbeat IPC: 0.103463 Cumulative IPC: 0.183100
+Prefetcher heartbeat stats
+Instructions Retired: 500000 Cycle: 3158524 Hearbeat IPC: 0.102677 Cumulative IPC: 0.158302
+Prefetcher heartbeat stats
+Instructions Retired: 600003 Cycle: 4138401 Hearbeat IPC: 0.102057 Cumulative IPC: 0.144984
+Prefetcher heartbeat stats
+Instructions Retired: 700000 Cycle: 5127592 Hearbeat IPC: 0.101090 Cumulative IPC: 0.136516
+Prefetcher heartbeat stats
+Instructions Retired: 800003 Cycle: 6169666 Hearbeat IPC: 0.095965 Cumulative IPC: 0.129667
+Prefetcher heartbeat stats
+Instructions Retired: 900000 Cycle: 7174066 Hearbeat IPC: 0.099559 Cumulative IPC: 0.125452
+Prefetcher heartbeat stats
+Instructions Retired: 1000000 Cycle: 7325643 Hearbeat IPC: 0.659731 Cumulative IPC: 0.136507
+Prefetcher heartbeat stats
+Instructions Retired: 1100005 Cycle: 7495592 Hearbeat IPC: 0.588441 Cumulative IPC: 0.146754
+Prefetcher heartbeat stats
+Instructions Retired: 1200004 Cycle: 7667844 Hearbeat IPC: 0.580539 Cumulative IPC: 0.156498
+Prefetcher heartbeat stats
+Instructions Retired: 1300003 Cycle: 7841449 Hearbeat IPC: 0.576015 Cumulative IPC: 0.165786
+Prefetcher heartbeat stats
+Instructions Retired: 1400002 Cycle: 8020506 Hearbeat IPC: 0.558476 Cumulative IPC: 0.174553
+Prefetcher heartbeat stats
+Instructions Retired: 1500001 Cycle: 8202808 Hearbeat IPC: 0.548535 Cumulative IPC: 0.182864
+Prefetcher heartbeat stats
+Instructions Retired: 1600004 Cycle: 8387880 Hearbeat IPC: 0.540346 Cumulative IPC: 0.190752
+Prefetcher heartbeat stats
+Instructions Retired: 1700005 Cycle: 8555448 Hearbeat IPC: 0.596779 Cumulative IPC: 0.198704
+Prefetcher heartbeat stats
+Instructions Retired: 1800004 Cycle: 8725304 Hearbeat IPC: 0.588728 Cumulative IPC: 0.206297
+Prefetcher heartbeat stats
+Instructions Retired: 1900000 Cycle: 8891329 Hearbeat IPC: 0.602295 Cumulative IPC: 0.213691
+Prefetcher heartbeat stats
+Instructions Retired: 2000003 Cycle: 9052585 Hearbeat IPC: 0.620151 Cumulative IPC: 0.220932
+Prefetcher heartbeat stats
+Instructions Retired: 2100000 Cycle: 9220656 Hearbeat IPC: 0.594969 Cumulative IPC: 0.227750
+Prefetcher heartbeat stats
+Instructions Retired: 2200002 Cycle: 9391759 Hearbeat IPC: 0.584455 Cumulative IPC: 0.234248
+Prefetcher heartbeat stats
+Instructions Retired: 2300003 Cycle: 9560128 Hearbeat IPC: 0.593939 Cumulative IPC: 0.240583
+Prefetcher heartbeat stats
+Instructions Retired: 2400002 Cycle: 9724616 Hearbeat IPC: 0.607941 Cumulative IPC: 0.246797
+Prefetcher heartbeat stats
+Instructions Retired: 2500000 Cycle: 9890147 Hearbeat IPC: 0.604104 Cumulative IPC: 0.252777
+Prefetcher heartbeat stats
+Instructions Retired: 2600000 Cycle: 10065256 Hearbeat IPC: 0.571073 Cumulative IPC: 0.258314
+Prefetcher heartbeat stats
+Instructions Retired: 2700004 Cycle: 10232031 Hearbeat IPC: 0.599634 Cumulative IPC: 0.263878
+Prefetcher heartbeat stats
+Instructions Retired: 2800000 Cycle: 10406158 Hearbeat IPC: 0.574270 Cumulative IPC: 0.269071
+Prefetcher heartbeat stats
+Instructions Retired: 2900001 Cycle: 10572963 Hearbeat IPC: 0.599508 Cumulative IPC: 0.274285
+Prefetcher heartbeat stats
+Instructions Retired: 3000003 Cycle: 10739453 Hearbeat IPC: 0.600649 Cumulative IPC: 0.279344
+Prefetcher heartbeat stats
+
+Simulation complete. Instructions retired: 3099757 Cycles elapsed: 10905258 IPC: 0.284244
+
+Prefetcher final stats
+
+real	2m52.500s
+user	2m45.656s
+sys	0m7.560s

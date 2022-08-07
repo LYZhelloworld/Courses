@@ -1,0 +1,78 @@
+
+*** Data Prefetching Championship 2 Simulator ***
+
+Warmup Instructions: 10000000
+Simulation Instructions: 100000000
+Scramble loads OFF
+Using 1MB Last Level Cache
+Using 12.8 GB/s DRAM bandwidth
+IP-based Stride Prefetcher
+Knobs visible from prefetcher: 0 0 0
+Instructions Retired: 100001 Cycle: 120887 Hearbeat IPC: 0.827227 Cumulative IPC: 0.827227
+Prefetcher heartbeat stats
+Instructions Retired: 200004 Cycle: 240734 Hearbeat IPC: 0.834422 Cumulative IPC: 0.830809
+Prefetcher heartbeat stats
+Instructions Retired: 300002 Cycle: 1003509 Hearbeat IPC: 0.131098 Cumulative IPC: 0.298953
+Prefetcher heartbeat stats
+Instructions Retired: 400000 Cycle: 1835011 Hearbeat IPC: 0.120262 Cumulative IPC: 0.217982
+Prefetcher heartbeat stats
+Instructions Retired: 500000 Cycle: 2650633 Hearbeat IPC: 0.122606 Cumulative IPC: 0.188634
+Prefetcher heartbeat stats
+Instructions Retired: 600003 Cycle: 3431860 Hearbeat IPC: 0.128008 Cumulative IPC: 0.174833
+Prefetcher heartbeat stats
+Instructions Retired: 700000 Cycle: 4196878 Hearbeat IPC: 0.130712 Cumulative IPC: 0.166791
+Prefetcher heartbeat stats
+Instructions Retired: 800003 Cycle: 4992313 Hearbeat IPC: 0.125721 Cumulative IPC: 0.160247
+Prefetcher heartbeat stats
+Instructions Retired: 900000 Cycle: 5769104 Hearbeat IPC: 0.128731 Cumulative IPC: 0.156003
+Prefetcher heartbeat stats
+Instructions Retired: 1000000 Cycle: 5934070 Hearbeat IPC: 0.606185 Cumulative IPC: 0.168518
+Prefetcher heartbeat stats
+Instructions Retired: 1100005 Cycle: 6130983 Hearbeat IPC: 0.507864 Cumulative IPC: 0.179417
+Prefetcher heartbeat stats
+Instructions Retired: 1200004 Cycle: 6325561 Hearbeat IPC: 0.513928 Cumulative IPC: 0.189707
+Prefetcher heartbeat stats
+Instructions Retired: 1300003 Cycle: 6522123 Hearbeat IPC: 0.508740 Cumulative IPC: 0.199322
+Prefetcher heartbeat stats
+Instructions Retired: 1400002 Cycle: 6720054 Hearbeat IPC: 0.505222 Cumulative IPC: 0.208332
+Prefetcher heartbeat stats
+Instructions Retired: 1500001 Cycle: 6919121 Hearbeat IPC: 0.502338 Cumulative IPC: 0.216791
+Prefetcher heartbeat stats
+Instructions Retired: 1600004 Cycle: 7124168 Hearbeat IPC: 0.487708 Cumulative IPC: 0.224588
+Prefetcher heartbeat stats
+Instructions Retired: 1700005 Cycle: 7318331 Hearbeat IPC: 0.515036 Cumulative IPC: 0.232294
+Prefetcher heartbeat stats
+Instructions Retired: 1800004 Cycle: 7515524 Hearbeat IPC: 0.507112 Cumulative IPC: 0.239505
+Prefetcher heartbeat stats
+Instructions Retired: 1900000 Cycle: 7714865 Hearbeat IPC: 0.501633 Cumulative IPC: 0.246278
+Prefetcher heartbeat stats
+Instructions Retired: 2000004 Cycle: 7907114 Hearbeat IPC: 0.520180 Cumulative IPC: 0.252937
+Prefetcher heartbeat stats
+Instructions Retired: 2100000 Cycle: 8105250 Hearbeat IPC: 0.504684 Cumulative IPC: 0.259091
+Prefetcher heartbeat stats
+Instructions Retired: 2200002 Cycle: 8302700 Hearbeat IPC: 0.506467 Cumulative IPC: 0.264974
+Prefetcher heartbeat stats
+Instructions Retired: 2300003 Cycle: 8499754 Hearbeat IPC: 0.507480 Cumulative IPC: 0.270596
+Prefetcher heartbeat stats
+Instructions Retired: 2400002 Cycle: 8693535 Hearbeat IPC: 0.516041 Cumulative IPC: 0.276067
+Prefetcher heartbeat stats
+Instructions Retired: 2500000 Cycle: 8887041 Hearbeat IPC: 0.516770 Cumulative IPC: 0.281308
+Prefetcher heartbeat stats
+Instructions Retired: 2600003 Cycle: 9088163 Hearbeat IPC: 0.497226 Cumulative IPC: 0.286087
+Prefetcher heartbeat stats
+Instructions Retired: 2700004 Cycle: 9281966 Hearbeat IPC: 0.515993 Cumulative IPC: 0.290887
+Prefetcher heartbeat stats
+Instructions Retired: 2800000 Cycle: 9478793 Hearbeat IPC: 0.508040 Cumulative IPC: 0.295396
+Prefetcher heartbeat stats
+Instructions Retired: 2900001 Cycle: 9675043 Hearbeat IPC: 0.509559 Cumulative IPC: 0.299740
+Prefetcher heartbeat stats
+Instructions Retired: 3000003 Cycle: 9870063 Hearbeat IPC: 0.512778 Cumulative IPC: 0.303950
+Prefetcher heartbeat stats
+
+Simulation complete. Instructions retired: 3099757 Cycles elapsed: 10062403 IPC: 0.308053
+
+Prefetcher final stats
+
+real	2m46.360s
+user	2m40.772s
+sys	0m6.220s

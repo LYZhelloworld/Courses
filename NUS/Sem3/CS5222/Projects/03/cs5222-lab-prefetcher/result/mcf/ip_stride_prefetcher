@@ -1,0 +1,78 @@
+
+*** Data Prefetching Championship 2 Simulator ***
+
+Warmup Instructions: 10000000
+Simulation Instructions: 100000000
+Scramble loads OFF
+Using 1MB Last Level Cache
+Using 12.8 GB/s DRAM bandwidth
+IP-based Stride Prefetcher
+Knobs visible from prefetcher: 0 0 0
+Instructions Retired: 100004 Cycle: 247941 Hearbeat IPC: 0.403338 Cumulative IPC: 0.403338
+Prefetcher heartbeat stats
+Instructions Retired: 200000 Cycle: 596383 Hearbeat IPC: 0.286980 Cumulative IPC: 0.335355
+Prefetcher heartbeat stats
+Instructions Retired: 300000 Cycle: 995433 Hearbeat IPC: 0.250595 Cumulative IPC: 0.301376
+Prefetcher heartbeat stats
+Instructions Retired: 400003 Cycle: 1195861 Hearbeat IPC: 0.498947 Cumulative IPC: 0.334490
+Prefetcher heartbeat stats
+Instructions Retired: 500005 Cycle: 1543183 Hearbeat IPC: 0.287923 Cumulative IPC: 0.324009
+Prefetcher heartbeat stats
+Instructions Retired: 600000 Cycle: 1811605 Hearbeat IPC: 0.372529 Cumulative IPC: 0.331198
+Prefetcher heartbeat stats
+Instructions Retired: 700001 Cycle: 2036988 Hearbeat IPC: 0.443694 Cumulative IPC: 0.343645
+Prefetcher heartbeat stats
+Instructions Retired: 800002 Cycle: 2267620 Hearbeat IPC: 0.433596 Cumulative IPC: 0.352794
+Prefetcher heartbeat stats
+Instructions Retired: 900005 Cycle: 2592999 Hearbeat IPC: 0.307343 Cumulative IPC: 0.347090
+Prefetcher heartbeat stats
+Instructions Retired: 1000005 Cycle: 3004045 Hearbeat IPC: 0.243282 Cumulative IPC: 0.332886
+Prefetcher heartbeat stats
+Instructions Retired: 1100003 Cycle: 3653137 Hearbeat IPC: 0.154058 Cumulative IPC: 0.301112
+Prefetcher heartbeat stats
+Instructions Retired: 1200000 Cycle: 4432211 Hearbeat IPC: 0.128354 Cumulative IPC: 0.270745
+Prefetcher heartbeat stats
+Instructions Retired: 1300002 Cycle: 5105829 Hearbeat IPC: 0.148455 Cumulative IPC: 0.254611
+Prefetcher heartbeat stats
+Instructions Retired: 1400000 Cycle: 5538633 Hearbeat IPC: 0.231047 Cumulative IPC: 0.252770
+Prefetcher heartbeat stats
+Instructions Retired: 1500001 Cycle: 5737424 Hearbeat IPC: 0.503046 Cumulative IPC: 0.261442
+Prefetcher heartbeat stats
+Instructions Retired: 1600004 Cycle: 5991832 Hearbeat IPC: 0.393081 Cumulative IPC: 0.267031
+Prefetcher heartbeat stats
+Instructions Retired: 1700004 Cycle: 6306170 Hearbeat IPC: 0.318129 Cumulative IPC: 0.269578
+Prefetcher heartbeat stats
+Instructions Retired: 1800004 Cycle: 6568077 Hearbeat IPC: 0.381815 Cumulative IPC: 0.274053
+Prefetcher heartbeat stats
+Instructions Retired: 1900001 Cycle: 6951761 Hearbeat IPC: 0.260623 Cumulative IPC: 0.273312
+Prefetcher heartbeat stats
+Instructions Retired: 2000001 Cycle: 7128947 Hearbeat IPC: 0.564379 Cumulative IPC: 0.280546
+Prefetcher heartbeat stats
+Instructions Retired: 2100001 Cycle: 7452409 Hearbeat IPC: 0.309155 Cumulative IPC: 0.281788
+Prefetcher heartbeat stats
+Instructions Retired: 2200004 Cycle: 7597484 Hearbeat IPC: 0.689319 Cumulative IPC: 0.289570
+Prefetcher heartbeat stats
+Instructions Retired: 2300000 Cycle: 7697927 Hearbeat IPC: 0.995550 Cumulative IPC: 0.298782
+Prefetcher heartbeat stats
+Instructions Retired: 2400004 Cycle: 7801380 Hearbeat IPC: 0.966661 Cumulative IPC: 0.307638
+Prefetcher heartbeat stats
+Instructions Retired: 2500002 Cycle: 7921561 Hearbeat IPC: 0.832062 Cumulative IPC: 0.315595
+Prefetcher heartbeat stats
+Instructions Retired: 2600000 Cycle: 8091907 Hearbeat IPC: 0.587029 Cumulative IPC: 0.321309
+Prefetcher heartbeat stats
+Instructions Retired: 2700004 Cycle: 8261157 Hearbeat IPC: 0.590866 Cumulative IPC: 0.326831
+Prefetcher heartbeat stats
+Instructions Retired: 2800001 Cycle: 8379580 Hearbeat IPC: 0.844405 Cumulative IPC: 0.334146
+Prefetcher heartbeat stats
+Instructions Retired: 2900001 Cycle: 8562332 Hearbeat IPC: 0.547190 Cumulative IPC: 0.338693
+Prefetcher heartbeat stats
+Instructions Retired: 3000001 Cycle: 8670811 Hearbeat IPC: 0.921837 Cumulative IPC: 0.345989
+Prefetcher heartbeat stats
+
+Simulation complete. Instructions retired: 3099757 Cycles elapsed: 8768604 IPC: 0.353506
+
+Prefetcher final stats
+
+real	2m24.042s
+user	2m20.284s
+sys	0m4.340s
